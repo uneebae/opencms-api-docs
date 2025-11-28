@@ -13,11 +13,18 @@ const config = {
     v4: true,
   },
 
-  url: 'https://your-docusaurus-site.example.com', // change later
-  baseUrl: '/',
+  // ✅ GitHub Pages URL
+  url: 'https://uneebae.github.io',
 
-  organizationName: 'paysyslabs', 
-  projectName: 'open-cms-docs',
+  // ✅ This MUST match repo name exactly
+  baseUrl: '/opencms-api-docs/',
+
+  // ✅ GitHub org/user and repo
+  organizationName: 'uneebae',
+  projectName: 'opencms-api-docs',
+
+  // recommended
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
 
@@ -33,10 +40,10 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/uneebae/opencms-api-docs/tree/main/',
         },
 
-        // BLOG DISABLED to fix author & blog errors
+        // BLOG DISABLED
         blog: false,
 
         theme: {
@@ -64,13 +71,18 @@ const config = {
           position: 'left',
           label: 'Docs',
         },
+
+        // ❌ FIXED BROKEN LINK
+        // Old: /apispeicification (wrong + doesn’t exist)
+        // New: /docs/api-spec  (you can change this later)
         {
-          to: '/apispeicification',
+          to: '/docs/api-spec',
           label: 'API Specification',
           position: 'left',
         },
+
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/uneebae/opencms-api-docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -78,8 +90,10 @@ const config = {
     },
 
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} 
-      © 2025 Paysys Labs. All rights reserved.`,
+      copyright: `
+        Copyright © ${new Date().getFullYear()}
+        © 2025 Paysys Labs. All rights reserved.
+      `,
     },
 
     prism: {
