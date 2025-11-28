@@ -44,7 +44,7 @@ const config = {
         },
 
         // BLOG DISABLED
-        blog: false,
+        blog: true,
 
         theme: {
           customCss: './src/css/custom.css',
