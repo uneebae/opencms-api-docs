@@ -1,30 +1,19 @@
 // @ts-check
-// Docusaurus site configuration
-
 import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Open CMS - Paysyslabs',
-  tagline: 'Seamless Fintech Integration',
+  title: 'Open CMS',
+  tagline: 'Enterprise Card Management System',
   favicon: 'img/favicon.png',
 
-  future: {
-    v4: true,
-  },
+  url: 'https://uneebae.github.io',    // GitHub Pages main URL
+  baseUrl: '/opencms-api-docs/',       // REPO NAME
 
-  // ✅ GitHub Pages URL
-  url: 'https://uneebae.github.io',
-
-  // ✅ This MUST match repo name exactly
-  baseUrl: '/opencms-api-docs/',
-
-  // ✅ GitHub org/user and repo
-  organizationName: 'uneebae',
-  projectName: 'opencms-api-docs',
-
-  // recommended
+  organizationName: 'uneebae',         // GitHub username
+  projectName: 'opencms-api-docs',     // Repo name
   deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
 
@@ -39,13 +28,8 @@ const config = {
       {
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl:
-            'https://github.com/uneebae/opencms-api-docs/tree/main/',
         },
-
-        // BLOG DISABLED
-        blog: true,
-
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -53,12 +37,28 @@ const config = {
     ],
   ],
 
-  themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
-    colorMode: {
-      respectPrefersColorScheme: true,
-    },
+  plugins: [
+    [
+      '@scalar/docusaurus',
+      {
+        id: 'openCMS',
+        label: 'API Specifications',
+        route: '/api-specifications',
+        showNavLink: false,
 
+        configuration: {
+          // ❗ CRITICAL FIX → No leading slash
+          url: 'openapi/OpenCMS-3.3.yml',
+
+          layout: 'modern',
+          theme: 'default',
+          darkMode: true,
+        },
+      },
+    ],
+  ],
+
+  themeConfig: {
     navbar: {
       logo: {
         alt: 'Open CMS Logo',
@@ -66,38 +66,19 @@ const config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/api-specifications',
           position: 'left',
-          label: 'Docs',
-        },
-
-        // ❌ FIXED BROKEN LINK
-        // Old: /apispeicification (wrong + doesn’t exist)
-        // New: /docs/api-spec  (you can change this later)
-        {
-          to: '/docs/api-spec',
-          label: 'API Specification',
-          position: 'left',
-        },
-
-        {
-          href: 'https://github.com/uneebae/opencms-api-docs',
-          label: 'GitHub',
-          position: 'right',
+          label: 'API Specifications',
         },
       ],
     },
 
     footer: {
-      copyright: `
-        Copyright © ${new Date().getFullYear()}
-        © 2025 Paysys Labs. All rights reserved.
-      `,
+      style: 'dark',
     },
 
     prism: {
-      theme: prismThemes.github,
+      theme: prismThemes.nightOwl,
       darkTheme: prismThemes.dracula,
     },
   },
